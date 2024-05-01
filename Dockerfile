@@ -25,10 +25,9 @@ RUN printenv
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install --no-install-recommends --no-install-suggests -y \
     ca-certificates git make \
-    build-essential libssl-dev zlib1g-dev \
-    libbz2-dev libreadline-dev libsqlite3-dev curl \
-    libncursesw5-dev xz-utils tk-dev libxml2-dev \
-    libxmlsec1-dev libffi-dev liblzma-dev
+    gcc libssl-dev zlib1g-dev uuid-dev libexpat1-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev curl libc6-dev \
+    libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev 
 
 RUN useradd -ms /bin/bash $USER_NAME
 USER $USER_NAME
@@ -71,4 +70,4 @@ RUN pyenv install --verbose 3.12 \
     && find $PYENV_ROOT/versions/3.12*/* -name '__pycache__' | xargs rm -r
 
 WORKDIR /home/$USER_NAME
-RUN tar -cvzf pyenv.tar.gz .pyenv
+RUN tar -czf pyenv.tar.gz .pyenv

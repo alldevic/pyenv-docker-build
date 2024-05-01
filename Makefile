@@ -17,7 +17,7 @@ build:
 	--build-arg PYTHON_CFLAGS=$(PYTHON_CFLAGS) \
 	--build-arg PROFILE_TASK=$(PROFILE_TASK) \
 	--build-arg DEFAULT_PACKAGES=$(DEFAULT_PACKAGES) \
-	--progress=plain . 2>&1 | tee build.log
+	--progress=plain .
 
 assets: clean build
 	$(DOCKER_RUN) \
