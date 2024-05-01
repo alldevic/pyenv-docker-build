@@ -1,0 +1,5 @@
+assets/*
+**/.env
+build.log
+
+!.gitkeep
